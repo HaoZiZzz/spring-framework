@@ -99,6 +99,7 @@ public class ApplicationContextLifecycleTests {
 		assertTrue(orderError, bean2.getStopOrder() < bean1.getStopOrder());
 		assertTrue(orderError, bean3.getStopOrder() < bean2.getStopOrder());
 		assertTrue(orderError, bean4.getStopOrder() < bean2.getStopOrder());
+		assertTrue(orderError, bean4.getStopOrder() < bean3.getStopOrder());
 	}
 
 }

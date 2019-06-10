@@ -93,12 +93,14 @@ public abstract class ClassUtils {
 	private static final Map<Class<?>, Class<?>> primitiveTypeToWrapperMap = new IdentityHashMap<>(8);
 
 	/**
+	 * 基本数据类型与基本数据类型数组类型缓存
 	 * Map with primitive type name as key and corresponding primitive
 	 * type as value, for example: "int" -> "int.class".
 	 */
 	private static final Map<String, Class<?>> primitiveTypeNameMap = new HashMap<>(32);
 
 	/**
+	 * java类常用的基本数据类型包装类型与包装类型的数组类型类缓存
 	 * Map with common Java language class name as key and corresponding Class as value.
 	 * Primarily for efficient deserialization of remote invocations.
 	 */
@@ -238,6 +240,7 @@ public abstract class ClassUtils {
 
 		Assert.notNull(name, "Name must not be null");
 
+		// java原始类型
 		Class<?> clazz = resolvePrimitiveClassName(name);
 		if (clazz == null) {
 			clazz = commonClassCache.get(name);

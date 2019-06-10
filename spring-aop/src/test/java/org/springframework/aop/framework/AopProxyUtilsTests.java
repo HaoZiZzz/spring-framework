@@ -130,4 +130,13 @@ public class AopProxyUtilsTests {
 		AopProxyUtils.proxiedUserInterfaces(proxy);
 	}
 
+	@Test
+	public void testAop(){
+		ProxyFactory factory = new ProxyFactory();
+		factory.setTarget(new org.springframework.aop.framework.TestBean());
+		factory.addAdvice(new MyAdvisor());
+		org.springframework.aop.framework.TestBean t = (org.springframework.aop.framework.TestBean) factory.getProxy();
+		t.test();
+	}
+
 }

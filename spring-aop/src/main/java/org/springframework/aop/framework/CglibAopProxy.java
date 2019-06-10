@@ -327,6 +327,7 @@ class CglibAopProxy implements AopProxy, Serializable {
 
 			// TODO: small memory optimization here (can skip creation for methods with no advice)
 			for (int x = 0; x < methods.length; x++) {
+				// 获取AOP调用拦截链
 				List<Object> chain = this.advised.getInterceptorsAndDynamicInterceptionAdvice(methods[x], rootClass);
 				fixedCallbacks[x] = new FixedChainStaticTargetInterceptor(
 						chain, this.advised.getTargetSource().getTarget(), this.advised.getTargetClass());
@@ -622,6 +623,7 @@ class CglibAopProxy implements AopProxy, Serializable {
 		@Nullable
 		private final Class<?> targetClass;
 
+
 		public FixedChainStaticTargetInterceptor(
 				List<Object> adviceChain, @Nullable Object target, @Nullable Class<?> targetClass) {
 
@@ -646,6 +648,7 @@ class CglibAopProxy implements AopProxy, Serializable {
 	/**
 	 * General purpose AOP callback. Used when the target is dynamic or when the
 	 * proxy is not frozen.
+	 * 动态带来adviser MethodInterceptor
 	 */
 	private static class DynamicAdvisedInterceptor implements MethodInterceptor, Serializable {
 
